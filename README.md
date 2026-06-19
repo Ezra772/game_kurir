@@ -1,64 +1,18 @@
 # Tiny Courier Planet
 
-Game browser 3D sederhana menggunakan Three.js. Pemain mengendalikan kurir kecil yang berjalan di planet low-poly untuk mengambil dan mengantar surat antar NPC.
+Game browser 3D sederhana berbasis Three.js. Pemain mengendalikan kurir kecil yang berjalan di planet low-poly untuk mengambil dan mengantar surat antar NPC.
 
-## Fitur Tahap 3
+## Status Saat Ini
 
-- Planet kecil low-poly dengan pohon, batu, rumah kecil, jalan melingkar, dan rute visual.
-- Karakter kurir sederhana dengan animasi berjalan.
-- Kontrol `W`, `A`, `S`, `D` di permukaan planet.
-- Kamera mengikuti karakter.
-- 5 NPC dengan marker target yang berpindah sesuai progress quest.
-- 5 quest pengantaran berantai.
-- Sistem skor: setiap quest selesai memberi `+100`.
-- Total quest selesai dan skor tampil di UI.
-- Timer permainan berjalan sejak game dimulai.
-- Dialog NPC tampil di UI saat pemain dekat.
-- Efek visual saat quest selesai.
-- Layar selesai setelah semua surat terkirim.
-- Tombol restart untuk mengulang skor, timer, quest, dan status surat.
+Project sudah sampai Tahap 6:
 
-## Fitur Tahap 4: Visual Polish
+- Gameplay loop 5 quest pengantaran berantai.
+- Skor, timer, total quest selesai, pause/resume, restart, dan completion screen.
+- Visual low-poly dengan planet berwarna, dekorasi, NPC, marker target, partikel, dan UI casual modern.
+- Kontrol desktop dan mobile.
+- Audio manager dengan BGM/SFX opsional, mute/unmute, volume, dan fallback aman jika file audio belum tersedia.
 
-- Variasi warna permukaan planet memakai vertex color agar planet terasa lebih hidup.
-- Dekorasi planet lebih padat: pohon, batu, semak, rumah kecil, jalan melingkar, dan rute putus-putus.
-- Marker tujuan lebih jelas dengan ring berdenyut, panah, dan ikon sederhana di atas NPC target.
-- Animasi karakter lebih halus: idle breathing, bobbing, ayunan tangan/kaki, dan sedikit lean saat berjalan.
-- Efek quest selesai ditambah flash, partikel ringan, dan animasi skor `+100`.
-- UI lebih modern dengan panel translucent, progress bar, stat chip, dialog animasi, indikator dekat NPC, dan completion screen.
-- Lighting dibuat lebih nyaman dengan hemisphere light, directional key light, fill light, rim light, dan background langit gradient.
-- Background atmosfer ditambah bintang dan awan low-poly ringan.
-
-## Fitur Tahap 5: Mobile Friendly dan Optimasi HP
-
-- Kontrol sentuh mobile dengan virtual joystick di kiri bawah.
-- Tombol `Aksi` di kanan bawah untuk interaksi NPC di perangkat sentuh.
-- Keyboard desktop tetap berjalan dengan `W`, `A`, `S`, `D`, dan `E`.
-- Tombol pause/resume untuk menghentikan gameplay dan timer.
-- Tombol fullscreen sederhana.
-- Kamera mobile dibuat sedikit lebih jauh dan tinggi agar nyaman di layar kecil.
-- UI responsif untuk desktop, tablet, dan mobile.
-- Mode rendering lebih ringan di layar kecil: pixel ratio dibatasi, dekorasi/bintang/partikel dikurangi.
-- Timer sadar pause, jadi waktu bermain tidak berjalan saat game pause.
-
-## Fitur Tahap 6: Audio dan Game Feel
-
-- Audio manager terpusat di `src/audio.js`.
-- Dukungan background music, sound effect, mute/unmute, volume, dan penyimpanan preferensi ke `localStorage`.
-- Sound effect dipanggil untuk interaksi NPC, pickup surat, quest selesai, semua quest selesai, tombol UI, pause/resume, fullscreen, restart, dan langkah kaki.
-- Jika file audio belum tersedia, game tetap aman dengan fallback bunyi sintetis ringan dari Web Audio.
-- Tombol `Sound On/Off` dan slider volume tersedia di UI.
-- Feedback interaksi ditambah: tombol Aksi pop, marker target pulse, skor bertambah, flash, dan partikel ringan.
-- Transisi UI lebih halus untuk dialog, pause panel, completion screen, quest complete text, dan skor.
-
-## Perubahan Visual
-
-- Planet tidak lagi satu warna datar; permukaannya punya variasi hijau dan aksen kuning halus.
-- Dekorasi mengikuti normal permukaan planet sehingga tetap menempel rapi di bola.
-- Kamera dibuat sedikit lebih jauh dan tinggi agar jalur serta marker lebih mudah dibaca.
-- Dialog NPC muncul dengan transisi kecil dan tidak memakai alert browser.
-
-## Cara Menjalankan
+## Quick Start
 
 Pastikan Node.js sudah terpasang, lalu jalankan:
 
@@ -73,52 +27,7 @@ Buka URL lokal yang ditampilkan Vite, biasanya:
 http://127.0.0.1:5173/
 ```
 
-## Cara Bermain
-
-1. Ikuti marker kuning ke NPC pengirim.
-2. Dekati NPC pengirim, lalu tekan tombol interaksi untuk mengambil surat.
-3. Marker akan berpindah ke NPC penerima.
-4. Dekati NPC penerima, lalu tekan tombol interaksi untuk menyelesaikan quest dan mendapat skor.
-5. Selesaikan semua 5 quest untuk membuka layar selesai.
-6. Gunakan tombol `Restart Game` untuk mulai dari awal.
-
-## Cara Bermain di Desktop
-
-- Gunakan keyboard untuk bergerak.
-- Tekan `E` saat dekat NPC target untuk mengambil atau mengantar surat.
-- Gunakan tombol `Pause` untuk menghentikan sementara.
-- Gunakan tombol `Fullscreen` jika ingin layar penuh.
-
-## Cara Bermain di Mobile
-
-- Gunakan virtual joystick di kiri bawah untuk bergerak.
-- Tekan tombol `Aksi` di kanan bawah saat dekat NPC target.
-- UI otomatis dipadatkan agar area bermain tetap terlihat.
-- Tombol `Pause` dan `Fullscreen` tetap tersedia di bagian atas.
-
-## Kontrol Keyboard
-
-- `W`: maju
-- `S`: mundur
-- `A`: bergerak ke kiri
-- `D`: bergerak ke kanan
-- `E`: interaksi dengan NPC target
-- `P` atau `Esc`: pause/resume
-
-## Kontrol Sentuh
-
-- Joystick kiri bawah: gerakan karakter
-- Tombol `Aksi`: interaksi dengan NPC target
-
-Interaksi hanya berhasil saat karakter cukup dekat dengan NPC yang relevan untuk quest saat ini.
-
-## Kontrol Audio
-
-- Tombol `Sound On/Off`: mute atau unmute semua audio.
-- Slider `Vol`: mengatur volume master.
-- Preferensi mute dan volume disimpan otomatis di browser.
-
-## Build Produksi
+Build produksi:
 
 ```bash
 npm run build
@@ -126,21 +35,63 @@ npm run build
 
 Hasil build akan dibuat di folder `dist`.
 
-## Struktur Kode
+## Cara Bermain
 
-- `src/main.js`: entry point, game loop, input, kamera, dan orkestrasi sistem.
-- `src/player.js`: pembuatan karakter, movement, reset, dan animasi.
-- `src/world.js`: scene, planet, NPC, dekorasi, marker, dan efek visual.
-- `src/quest.js`: data NPC, daftar quest, skor, timer state, dan progression.
-- `src/ui.js`: update HUD, dialog, completion screen, dan restart button.
-- `src/audio.js`: audio manager untuk BGM, SFX, mute, volume, dan fallback aman.
-- `src/utils.js`: helper umum seperti orientasi permukaan planet dan format waktu.
+1. Ikuti marker kuning ke NPC pengirim.
+2. Dekati NPC pengirim, lalu tekan tombol interaksi untuk mengambil surat.
+3. Marker berpindah ke NPC penerima.
+4. Dekati NPC penerima, lalu tekan tombol interaksi untuk menyelesaikan quest.
+5. Selesaikan semua 5 quest untuk membuka layar selesai.
+6. Gunakan `Restart Game` untuk mulai dari awal.
+
+## Kontrol Desktop
+
+- `W`: maju
+- `S`: mundur
+- `A`: bergerak ke kiri
+- `D`: bergerak ke kanan
+- `E`: interaksi dengan NPC target
+- `P` atau `Esc`: pause/resume
+- Tombol `Fullscreen`: masuk/keluar fullscreen
+- Tombol `Sound On/Off`: mute/unmute
+- Slider `Vol`: volume master
+
+## Kontrol Mobile
+
+- Virtual joystick kiri bawah: gerakan karakter.
+- Tombol `Aksi` kanan bawah: interaksi dengan NPC target.
+- Tombol `Pause`, `Fullscreen`, `Sound On/Off`, dan `Vol` tersedia di bagian atas.
+- UI otomatis dipadatkan di layar kecil agar area bermain tetap terlihat.
+
+## Fitur Utama
+
+- Planet bola low-poly dengan warna permukaan bervariasi.
+- Dekorasi planet: pohon, batu, semak, rumah kecil, jalan melingkar, dan rute visual.
+- Karakter kurir dengan animasi berjalan, idle breathing, bobbing, lean, dan shadow kecil.
+- 5 NPC dengan label dan dialog.
+- 5 quest pengantaran berantai.
+- Marker target yang berpindah dari NPC pengirim ke NPC penerima.
+- Skor `+100` setiap quest selesai.
+- Timer permainan yang berhenti saat pause.
+- Dialog NPC berbasis UI, bukan alert browser.
+- Efek quest complete: flash, partikel, marker pulse, score pop, dan SFX.
+- Game complete screen berisi total skor, total waktu, dan tombol restart.
+- Fullscreen support.
+- Kontrol keyboard dan touch.
+- Optimasi ringan untuk layar kecil/touch.
 
 ## Sistem Audio
 
-Audio manager akan mencoba memutar file dari folder `public/audio`. File bersifat opsional; kalau belum ada atau gagal dimuat, game tetap berjalan dan memakai fallback sintetis ringan.
+Audio dikelola di `src/audio.js`. Sistem ini mendukung:
 
-Nama file yang bisa ditambahkan:
+- Background music.
+- Sound effect untuk interaksi, pickup, quest complete, game complete, UI button, pause/resume, fullscreen, restart, dan langkah kaki.
+- Mute/unmute global.
+- Volume master.
+- Penyimpanan preferensi audio di `localStorage`.
+- Fallback Web Audio sintetis jika file audio belum ada atau gagal dimuat.
+
+File audio opsional bisa ditambahkan ke:
 
 ```text
 public/audio/bgm.mp3
@@ -154,20 +105,47 @@ public/audio/walk.mp3
 
 Gunakan file pendek dan ringan untuk SFX. Untuk BGM, gunakan loop kecil agar ukuran project tetap ramah browser.
 
-## Ide Lanjutan Gameplay
+## Struktur Kode
 
-- Menambah variasi tantangan rute seperti area licin atau jalan cepat.
-- Menambah collectible ringan di sekitar planet.
-- Menambah pengaturan sensitivitas kamera dan volume.
-- Menambah polish animasi NPC dan transisi quest.
+- `src/main.js`: entry point, game loop, input, kamera, quest orchestration, pause/fullscreen.
+- `src/player.js`: pembuatan karakter, movement, reset, dan animasi.
+- `src/world.js`: scene, planet, NPC, dekorasi, marker, lighting, dan efek visual.
+- `src/quest.js`: data NPC, daftar quest, skor, timer state, pause-aware timer, dan progression.
+- `src/ui.js`: update HUD, dialog, completion screen, restart, pause, fullscreen, audio controls, touch controls.
+- `src/audio.js`: audio manager untuk BGM, SFX, mute, volume, localStorage, dan fallback aman.
+- `src/utils.js`: helper umum seperti orientasi permukaan planet dan format waktu.
+- `public/audio/`: folder untuk file audio opsional.
 
 ## Catatan Optimasi
 
-- Game tetap memakai primitive low-poly dan tidak memakai asset eksternal berat.
+- Game memakai primitive low-poly dan tidak memakai asset eksternal berat.
 - Geometry dan material digunakan ulang untuk dekorasi.
-- Efek partikel memakai pool sederhana dan jumlahnya dikurangi di layar kecil.
-- Pixel ratio renderer dibatasi pada layar kecil agar browser HP tidak terlalu berat.
-- Dekorasi, bintang, dan awan dikurangi otomatis pada perangkat kecil/touch.
+- Efek partikel memakai pool sederhana.
+- Pixel ratio renderer dibatasi pada layar kecil.
+- Dekorasi, bintang, awan, dan partikel dikurangi otomatis pada perangkat kecil/touch.
+- Missing audio file tidak membuat game crash.
+
+## Checklist Testing Manual
+
+Desktop:
+
+- Jalankan `npm run dev`.
+- Pastikan game tampil di browser.
+- Gerakkan karakter dengan `W A S D`.
+- Dekati NPC target dan tekan `E`.
+- Pastikan skor bertambah setelah quest selesai.
+- Pastikan marker berpindah ke target berikutnya.
+- Test `Pause`, `Resume`, `Fullscreen`, `Sound On/Off`, dan slider `Vol`.
+- Selesaikan 5 quest dan pastikan completion screen muncul.
+- Tekan `Restart Game` dan pastikan quest, skor, timer, dan status surat kembali awal.
+
+Mobile/responsive:
+
+- Kecilkan ukuran browser atau buka dari HP di jaringan lokal.
+- Pastikan joystick dan tombol `Aksi` muncul.
+- Gerakkan karakter dengan joystick.
+- Tekan `Aksi` saat dekat NPC target.
+- Pastikan HUD tidak menutup area bermain secara berlebihan.
 
 ## Rencana Tahap 7
 
@@ -176,7 +154,3 @@ Gunakan file pendek dan ringan untuk SFX. Untuk BGM, gunakan loop kecil agar uku
 - Tambah screenshot/GIF gameplay untuk README.
 - Tambah checklist QA browser desktop dan mobile.
 - Rapikan metadata project dan instruksi kontribusi sederhana.
-
-## Catatan Teknis
-
-Game memakai bentuk low-poly dan material sederhana agar tetap ringan di browser. Asset visual dibuat dari primitive Three.js, jadi tidak ada file model eksternal berat yang perlu diunduh.
