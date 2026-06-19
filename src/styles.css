@@ -1,0 +1,256 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #111827;
+  color: #fffaf0;
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+}
+
+#game-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hud {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(280px, 420px) 1fr auto;
+  grid-template-rows: auto 1fr auto;
+  gap: 16px;
+  padding: 20px;
+  pointer-events: none;
+}
+
+.mission-panel,
+.dialog-panel,
+.controls-panel {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(31, 41, 55, 0.9), rgba(17, 24, 39, 0.78)),
+    rgba(17, 24, 39, 0.82);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+}
+
+.mission-panel {
+  grid-column: 1;
+  grid-row: 1;
+  padding: 18px;
+}
+
+.panel-topline,
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #7dd3fc;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.quest-step {
+  min-width: 42px;
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #fbbf24;
+  color: #332400;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+h1 {
+  margin: 10px 0 0;
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.08;
+}
+
+#mission-detail {
+  margin: 10px 0 14px;
+  color: #dbeafe;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.quest-progress {
+  height: 10px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.quest-progress span {
+  display: block;
+  width: 10%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #38bdf8, #34d399, #fbbf24);
+  transition: width 260ms ease;
+}
+
+.status-row {
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.status-pill {
+  min-height: 31px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 6px 11px;
+  background: #fde68a;
+  color: #2f2410;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.status-pill.muted {
+  background: rgba(255, 255, 255, 0.13);
+  color: #fffaf0;
+}
+
+.dialog-panel {
+  grid-column: 1 / 4;
+  grid-row: 3;
+  justify-self: center;
+  width: min(520px, calc(100vw - 32px));
+  padding: 14px 16px;
+  transform: translateY(0);
+  opacity: 1;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.dialog-panel.hidden {
+  transform: translateY(12px);
+  opacity: 0;
+}
+
+.dialog-panel p {
+  margin: 0 0 4px;
+  color: #93c5fd;
+  font-size: 0.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.dialog-panel strong {
+  display: block;
+  color: #fffaf0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.controls-panel {
+  grid-column: 3;
+  grid-row: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 36px);
+  grid-template-areas:
+    ". w ."
+    "a s d";
+  gap: 7px;
+  align-self: start;
+  padding: 12px;
+}
+
+.controls-panel span {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-weight: 950;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
+}
+
+.controls-panel span:nth-child(1) {
+  grid-area: w;
+}
+
+.controls-panel span:nth-child(2) {
+  grid-area: a;
+}
+
+.controls-panel span:nth-child(3) {
+  grid-area: s;
+}
+
+.controls-panel span:nth-child(4) {
+  grid-area: d;
+}
+
+.completion-flash {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  border-radius: 8px;
+  padding: 16px 22px;
+  background: #fff7ed;
+  color: #7c2d12;
+  box-shadow: 0 22px 64px rgba(0, 0, 0, 0.32);
+  font-size: clamp(1.4rem, 5vw, 3rem);
+  font-weight: 950;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.92);
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease;
+}
+
+.completion-flash.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media (max-width: 720px) {
+  .hud {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr auto;
+    padding: 12px;
+  }
+
+  .mission-panel {
+    grid-column: 1 / 3;
+    padding: 14px;
+  }
+
+  .controls-panel {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+  }
+
+  .dialog-panel {
+    grid-column: 1 / 3;
+  }
+}

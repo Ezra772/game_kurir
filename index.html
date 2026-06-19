@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kurir Planet Mini</title>
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <main class="hud" aria-live="polite">
+      <section class="mission-panel">
+        <div class="panel-topline">
+          <p class="eyebrow">Misi Kurir</p>
+          <span id="quest-step" class="quest-step">1/2</span>
+        </div>
+        <h1 id="mission-title">Ambil surat dari NPC A</h1>
+        <p id="mission-detail">Gunakan W A S D untuk berjalan di planet kecil.</p>
+        <div class="quest-progress" aria-hidden="true">
+          <span id="quest-progress-fill"></span>
+        </div>
+        <div class="status-row">
+          <span id="letter-status" class="status-pill">Surat: belum diambil</span>
+          <span id="distance-status" class="status-pill muted">Target: NPC A</span>
+        </div>
+      </section>
+
+      <section id="dialog-panel" class="dialog-panel hidden">
+        <p id="dialog-speaker">NPC A</p>
+        <strong id="dialog-text">Suratnya sudah siap. Tolong antar, ya!</strong>
+      </section>
+
+      <section class="controls-panel" aria-label="Kontrol">
+        <span>W</span>
+        <span>A</span>
+        <span>S</span>
+        <span>D</span>
+      </section>
+
+      <div id="completion-flash" class="completion-flash hidden">Misi Selesai!</div>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
